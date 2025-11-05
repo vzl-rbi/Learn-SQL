@@ -66,7 +66,7 @@
 -- SELECT brand, model, color, year FROM cars
 -- WHERE model LIKE '%DB%'; -- use this 'DB_' same output
 
---Challenge-07
+--Challenge-07---*************
 --AND
 /*
 	Select the brand, model, color and year from cars
@@ -100,5 +100,71 @@
 		and the year is before 1970
 		and the price is below 100,000
 */
-SELECT brand, model, year, condition, price FROM cars
-WHERE condition >= 3 AND year < 1970 AND price < 100000;
+-- SELECT brand, model, year, condition, price FROM cars
+-- WHERE condition >= 3 AND year < 1970 AND price < 100000;
+
+--Challenge-08 ----------------------
+--BETWEEN
+/*
+	Select cars made between 1980 and 1989
+		show the brand, model, year and price
+*/
+-- SELECT brand, model, year, price FROM cars
+-- WHERE year BETWEEN 1980 AND 1989; --//WHERE year >= 1980 AND year <= 1989;
+
+/*
+	Select brand, model, condition, color and price from cars
+		where the price is between $20,000 and $60,000
+		and the condition is between 1 and 3
+		and the color contains red
+*/
+-- SELECT brand, model, condition, color, price FROM cars
+-- WHERE price BETWEEN 20000 AND 60000 AND
+-- condition BETWEEN 1 AND 3 AND color LIKE '%red%';
+
+/*
+Hint:
+color = 'red' only matches exactly "red"
+
+color LIKE '%red%' matches any color that contains "red" anywhere in the name (like "red", "dark red", "burgundy red", etc.)
+*/
+
+--Challenge-09-----------
+-- OR  --
+/*
+	Find the brand, model, condition and price of cars
+		where the price is less than $250,000
+		or the brand is Porsche
+*/
+-- SELECT brand, model, condition, price FROM cars
+-- 	WHERE price < 250000
+-- 	OR brand = 'Porsche';
+/*
+	Find the brand, model, condition and price of cars
+		where the price is less than $250,000
+		or the brand is Porsche,
+		only show cars with condition > 3
+*/
+--  SELECT brand, model, condition, price FROM cars
+-- WHERE (price < 250000 OR brand = 'Porsche') --//Always use parentheses when mixing AND/OR to avoid confusion
+-- AND condition > 3; 
+/*
+	Search for brand, model, color, year and price of cars
+		where the color is a shade of red
+		or the year is between 1960 and 1969
+*/
+-- SELECT brand, model, color, year, price FROM cars
+-- WHERE color LIKE '%red%'
+--  OR (year BETWEEN 1960 AND 1969);
+/*
+	Search for columns: brand, model, color, year, price, sold
+		from the table cars
+		where the color is a shade of red
+		or the year is between 1960 and 1969
+		and sold is false
+*/
+
+SELECT brand, model, color, year, price, sold FROM cars
+WHERE (color LIKE '%red%' OR year BETWEEN 1960 AND 1969)
+AND sold = false; --// instead do this sold IS false; // same result
+
