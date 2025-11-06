@@ -164,7 +164,43 @@ color LIKE '%red%' matches any color that contains "red" anywhere in the name (l
 		and sold is false
 */
 
-SELECT brand, model, color, year, price, sold FROM cars
-WHERE (color LIKE '%red%' OR year BETWEEN 1960 AND 1969)
-AND sold = false; --// instead do this sold IS false; // same result
+-- SELECT brand, model, color, year, price, sold FROM cars
+-- WHERE (color LIKE '%red%' OR year BETWEEN 1960 AND 1969)
+-- AND sold = false; --// instead do this sold IS false; // same result
+
+--Challenge-10-------- IN operator
+-- The IN operator allows you to specify multiple values in a WHERE clause.
+
+-- The IN operator is a shorthand for multiple OR conditions.
+
+/*
+	Select the brand, model, price and sold columns from cars
+		the brand can be 'Ford', 'Chevorlet' or 'Ferrari'
+		sold must be false
+*/
+-- SELECT brand, model, price, sold FROM cars
+-- WHERE brand IN ('Ford', 'Chevrolet', 'Ferrari')
+-- AND sold = FALSE; --// IS FALSE; -- //sold = FALSE;
+
+
+/*
+	Select the brand, model, condition and year from cars
+		Where the year is 1961, 1963, 1965, 1967 or 1969
+		and the condition is 3 or higher
+		and sold is false
+*/
+-- SELECT brand, model, condition, year FROM cars
+-- WHERE year IN (1961, 1963, 1965, 1967, 1969)
+-- AND condition >= 3
+-- AND sold IS FALSE;
+/*
+	Select brand, model, price and sold from cars
+		filter out any cars which are sold
+		show cars where the brand is none of ('Ford', 'Triumph', 'Chevrolet', 'Dodge')
+		or the price is less than $50000
+*/
+SELECT brand, model, price, sold FROM cars
+WHERE sold IS FALSE
+AND (brand NOT IN ('Ford', 'Triumph', 'Chevrolet', 'Dodge')
+OR price < 50000);
 
