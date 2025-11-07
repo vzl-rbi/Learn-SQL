@@ -35,7 +35,57 @@
 --     OR
 --     (brand IN ('Ford', 'Triumph') AND year BETWEEN 1970 AND 1979)
 -- );
-SELECT brand, model, year, sold FROM cars
-  WHERE ((brand = 'Dodge' AND year BETWEEN 1960 AND 1969)
-  OR (brand IN ('Ford', 'Triumph') AND year BETWEEN 1970 AND 1979))
-  AND SOLD IS NOT TRUE;
+-- SELECT brand, model, year, sold FROM cars
+--   WHERE ((brand = 'Dodge' AND year BETWEEN 1960 AND 1969)
+--   OR (brand IN ('Ford', 'Triumph') AND year BETWEEN 1970 AND 1979))
+--   AND SOLD IS NOT TRUE;
+
+--Challange-10---ORDER BY Operator---
+--The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+--The ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword.
+/*
+	Select the brand, model and year from the cars table
+		order by the brand
+*/
+-- SELECT brand, model, year FROM cars
+-- ORDER BY brand;
+/*
+	Select the brand, model, condition and price from cars
+		order the table by condition in descending order
+		and by price in ascending order
+*/
+--  SELECT brand, model, condition, price FROM cars
+-- ORDER BY condition DESC, price;
+/*
+		Select the brand, model, condition and price from cars
+		where the car is not sold
+		and the condition is not 5
+		order the table by condition in descending order
+		and by price in ascending order
+*/
+-- SELECT brand, model, condition, price FROM cars
+-- WHERE sold IS FALSE
+-- AND condition != 5
+-- ORDER BY condition DESC, price;
+--Challenge-11----LIMIT operator--
+-- The LIMIT clause is used to specify the number of records to return.
+--The LIMIT clause is useful on large tables with thousands of records. Returning a large number of records can impact performance.
+/*
+	Select the brand, model, year and price from the cars table
+		order the results by the price in descending order
+		limit the results to 1
+*/
+-- SELECT brand, model, year, price FROM cars
+-- ORDER BY price DESC LIMIT 1;
+-- --✅ LIMIT 1 - returns only the single most expensive car
+/*
+	Select the brand, model, color and price from cars
+		where the color is a shade of 'red'
+		and sold is false
+		order by price
+		limit the results to 5
+*/
+SELECT brand, model, color, price FROM cars
+WHERE color LIKE '%red%'
+AND sold IS FALSE
+ORDER BY price LIMIT 5;
