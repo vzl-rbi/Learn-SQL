@@ -29,19 +29,3 @@ A starter project for learning SQL database fundamentals with Node.js and PGLite
    ```bash
    git clone <your-repo-url>
    cd node-starter
-
-2. Initialize the project
-      npm init -y
-4. Install dependencies
-    npm install @electric-sql/pglite
-5. Run the application
-   node index.js
-
-📁 Project Structure
-node-starter/
-├── index.js              # Main application file
-├── populate-tables.sql   # SQL for creating and populating tables
-├── alter-table.sql       # Schema migration SQL
-├── query.sql            # Example SQL queries
-├── package.json         # Project configuration
-└── README.md           # This file
