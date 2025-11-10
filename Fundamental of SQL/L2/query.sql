@@ -40,6 +40,11 @@
 --   OR (brand IN ('Ford', 'Triumph') AND year BETWEEN 1970 AND 1979))
 --   AND SOLD IS NOT TRUE;
 
+
+
+
+
+
 --Challange-10---ORDER BY Operator---
 --The ORDER BY keyword is used to sort the result-set in ascending or descending order.
 --The ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword.
@@ -67,6 +72,11 @@
 -- WHERE sold IS FALSE
 -- AND condition != 5
 -- ORDER BY condition DESC, price;
+
+
+
+
+
 --Challenge-11----LIMIT operator--
 -- The LIMIT clause is used to specify the number of records to return.
 --The LIMIT clause is useful on large tables with thousands of records. Returning a large number of records can impact performance.
@@ -85,7 +95,28 @@
 		order by price
 		limit the results to 5
 */
-SELECT brand, model, color, price FROM cars
-WHERE color LIKE '%red%'
-AND sold IS FALSE
-ORDER BY price LIMIT 5;
+-- SELECT brand, model, color, price FROM cars
+-- WHERE color LIKE '%red%'
+-- AND sold IS FALSE
+-- ORDER BY price LIMIT 5;
+
+
+
+
+--Challenge-12--COUNT and SUM ---
+/*
+	Count the number of cars
+		where sold is true
+*/
+-- SELECT COUNT(*) FROM cars
+-- WHERE sold IS TRUE;
+--alternative
+-- SELECT COUNT(*) AS total_sold FROM cars
+-- WHERE sold IS TRUE;
+/*
+	Sum the price of cars
+		where sold is true
+	Use the alias total_earnings in your output
+*/
+-- SELECT SUM(price) AS total_earnings FROM cars
+-- WHERE sold IS TRUE;
