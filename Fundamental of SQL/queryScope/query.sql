@@ -172,10 +172,96 @@
 		and use 'avg' as the alias for that result	
 */
 
-SELECT
- AVG(price) AS average_price, 
- MIN(price) AS minimum_price,
- MAX(price) AS maximum_price
- FROM cars
- WHERE sold IS TRUE;
+-- SELECT
+--  AVG(price) AS average_price, 
+--  MIN(price) AS minimum_price,
+--  MAX(price) AS maximum_price
+--  FROM cars
+--  WHERE sold IS TRUE;
 
+
+
+--Challenge-xx--GROUP BY operator---
+-- The GROUP BY statement groups rows that have the same values into summary rows, like "find the number of customers in each country".
+
+-- The GROUP BY statement is often used with aggregate functions (COUNT(), MAX(), MIN(), SUM(), AVG()) to group the result-set by one or more columns.
+/*
+	Select the brand, and a count of the brand from cars
+		alias the count as brand_count
+		group by the brand column
+*/
+-- SELECT brand, COUNT(brand) AS brand_count FROM cars
+-- GROUP BY brand;
+
+/*
+	Select the condition, and a count of the condition from cars
+		group by the condition column
+*/
+
+-- SELECT condition, COUNT(condition) FROM cars
+-- GROUP BY condition;
+
+/*
+	Select:
+		* the brand
+		* a count of the brand
+		* and an average of the price for each brand
+		* round the average down to the nearest number
+		* alias the average as 'AVG' in your output
+	From cars where
+		the car has not been sold
+	Group the table by brand.
+*/
+-- Using FLOOR() (rounds down to nearest integer)
+-- 📊 What Each Rounding Method Does:
+-- FLOOR(123.89) = 123 (always rounds down)
+-- ROUND(123.89, 0) = 124 (rounds to nearest integer)
+-- CAST(123.89 AS INTEGER) = 123 (truncates decimal part)
+
+-- SELECT brand, COUNT(brand), FLOOR(AVG(price)) AS AVG FROM cars
+-- WHERE sold IS NOT TRUE
+-- GROUP BY brand;
+
+--Challenge-xx---HAVING --
+/*
+	Select:
+		* the brand
+		* a count of the brand
+		* and an average of the price for each brand
+		* round the average down to the nearest number
+		* alias the average as 'AVG' in your output
+	From cars where
+		the car has not been sold
+	Group the table by brand.
+	
+	Show results where the count is > 1
+*/
+
+-- SELECT brand, count(brand), FLOOR(AVG(price)) AS AVG
+-- 	FROM cars
+-- 	WHERE sold IS FALSE
+-- 	GROUP BY brand
+-- 	HAVING count(brand) > 1;
+
+/*
+	Select:
+		* year
+		* a count of cars from that year, aliased as car_count
+		* the maximum price
+		* the minimum price
+	from the table cars
+		where the car has been sold
+	group by year
+		only show years where more than one car has been sold from that year
+	order the result by car_count
+*/
+SELECT 
+    year, 
+    COUNT(year) AS car_count, 
+    MAX(price), 
+    MIN(price) 
+FROM cars
+WHERE sold = TRUE
+GROUP BY year
+HAVING COUNT(year) > 1
+ORDER BY car_count;
